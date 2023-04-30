@@ -1,0 +1,418 @@
+prefixes:
+  pilot: "https://assist-iot.eu/pilot2_rdf/"
+  om: "http://www.ontology-of-units-of-measure.org/resource/om-2/"
+  geosparql: "http://www.opengis.net/ont/geosparql#"
+  aiot: "https://assist-iot.eu/ontologies/aiot#"
+  aiot_p2: "https://assist-iot.eu/ontologies/aiot_p2#"
+
+authors:
+  - name: Piotr Sowiński
+    email: piotr.sowinski@ibspan.waw.pl
+
+sources:
+  main: ['./temp/data.json~jsonpath', '$']
+
+mappings:
+  feature:
+    sources: main
+    s: pilot:feature/site_outside
+    po:
+      - [a, sosa:FeatureOfInterest]
+      - [rdfs:label, "Outside conditions on the worksite"]
+
+  sensor:
+    sources: main
+    s: pilot:sensor
+    po:
+      - [a, sosa:Sensor]
+      - [rdfs:label, 'Davis Vantage Pro 2 weather station installed on the pilot site']
+      - p: geosparql:hasGeometry
+        o: { mapping: location }
+
+  location:
+    sources: main
+    s: pilot:sensor/location
+    po:
+      - [a, geosparql:Geometry]
+      - p: geosparql:asWKT
+        o:
+          value: Point($(location.longitude) $(location.latitude))
+          datatype: geosparql:wktLiteral
+
+  ### Humidity ###
+  prop_hum:
+    sources: main
+    s: pilot:prop/site_outside/humidity
+    po:
+      - p: a
+        o: [om:RelativeHumidity, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_hum:
+    sources: main
+    s: pilot:obs/humidity
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_hum }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_hum:
+    sources: main
+    s: pilot:result/humidity
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_hum }
+      - p: om:hasUnit
+        o:
+          value: om:percent
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(hum_out)
+          datatype: xsd:float
+
+  ### UV ###
+  prop_uv:
+    sources: main
+    s: pilot:prop/site_outside/uv
+    po:
+      - p: a
+        o: [aiot_p2:UvIndex, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_uv:
+    sources: main
+    s: pilot:obs/uv
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_uv }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_uv:
+    sources: main
+    s: pilot:result/uv
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_uv }
+      - p: om:hasUnit
+        o:
+          value: om:one
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(uv)
+          datatype: xsd:float
+
+  ### Atmospheric pressure ###
+  prop_pressure:
+    sources: main
+    s: pilot:prop/site_outside/pressure
+    po:
+      - p: a
+        o: [aiot_p2:AtmosphericPressure, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_pressure:
+    sources: main
+    s: pilot:obs/pressure
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_pressure }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_pressure:
+    sources: main
+    s: pilot:result/pressure
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_pressure }
+      - p: om:hasUnit
+        o:
+          value: aiot_p2:inchHg
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(barometer)
+          datatype: xsd:float
+
+  ### Wind speed ###
+  prop_wind_speed:
+    sources: main
+    s: pilot:prop/site_outside/wind_speed
+    po:
+      - p: a
+        o: [aiot_p2:WindSpeed, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_wind_speed:
+    sources: main
+    s: pilot:obs/wind_speed
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_wind_speed }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_wind_speed:
+    sources: main
+    s: pilot:result/wind_speed
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_wind_speed }
+      - p: om:hasUnit
+        o:
+          value: om:mile-StatutePerHour
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(wind_speed)
+          datatype: xsd:float
+
+  ### Average wind speed ###
+  prop_wind_speed_avg:
+    sources: main
+    s: pilot:prop/site_outside/wind_speed_avg
+    po:
+      - p: a
+        o: [aiot_p2:AverageWindSpeed, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_wind_speed_avg:
+    sources: main
+    s: pilot:obs/wind_speed_avg
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_wind_speed_avg }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_wind_speed_avg:
+    sources: main
+    s: pilot:result/wind_speed_avg
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_wind_speed_avg }
+      - p: om:hasUnit
+        o:
+          value: om:mile-StatutePerHour
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(wind_speed_10_min_avg)
+          datatype: xsd:float
+
+  ### Wind direction ###
+  prop_wind_dir:
+    sources: main
+    s: pilot:prop/site_outside/wind_dir
+    po:
+      - p: a
+        o: [aiot_p2:WindDirection, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_wind_dir:
+    sources: main
+    s: pilot:obs/wind_dir
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_wind_dir }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_wind_dir:
+    sources: main
+    s: pilot:result/wind_dir
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_wind_dir }
+      - p: om:hasUnit
+        o:
+          value: om:degree
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(wind_direction)
+          datatype: xsd:float
+
+  ### Air temperature ###
+  prop_temp:
+    sources: main
+    s: pilot:prop/site_outside/temp
+    po:
+      - p: a
+        o: [om:FahrenheitTemperature, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_temp:
+    sources: main
+    s: pilot:obs/temp
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_temp }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_temp:
+    sources: main
+    s: pilot:result/temp
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_temp }
+      - p: om:hasUnit
+        o:
+          value: om:degreeFahrenheit
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(temp_out)
+          datatype: xsd:float
+
+  ### Solar irradiance ###
+  prop_sun:
+    sources: main
+    s: pilot:prop/site_outside/sun
+    po:
+      - p: a
+        o: [aiot_p2:SolarIrradiance, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_sun:
+    sources: main
+    s: pilot:obs/sun
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_sun }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_sun:
+    sources: main
+    s: pilot:result/sun
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_sun }
+      - p: om:hasUnit
+        o:
+          value: om:wattPerSquareMetre
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(solar_radiation)
+          datatype: xsd:float
+
+  ### Rain rate ###
+  prop_rain:
+    sources: main
+    s: pilot:prop/site_outside/rain
+    po:
+      - p: a
+        o: [aiot_p2:RainRate, sosa:ObservableProperty]
+      - p: ssn:isPropertyOf
+        o: { mapping: feature }
+
+  obs_rain:
+    sources: main
+    s: pilot:obs/rain
+    po:
+      - [a, sosa:Observation]
+      - p: sosa:madeBySensor
+        o: { mapping: sensor }
+      - p: sosa:hasFeatureOfInterest
+        o: { mapping: feature }
+      - p: sosa:observedProperty
+        o: { mapping: prop_rain }
+      - p: sosa:resultTime
+        o:
+          value: $(timestamp)
+          datatype: xsd:dateTime
+
+  res_rain:
+    sources: main
+    s: pilot:result/rain
+    po:
+      - [a, aiot:MeasureResult]
+      - p: sosa:isResultOf
+        o: { mapping: obs_rain }
+      - p: om:hasUnit
+        o:
+          value: aiot_p2:inchPerHour
+          type: iri
+      - p: om:hasNumericalValue
+        o:
+          value: $(rain_rate)
+          datatype: xsd:float
