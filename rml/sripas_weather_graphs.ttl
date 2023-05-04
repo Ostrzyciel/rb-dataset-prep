@@ -1379,98 +1379,148 @@ map:rules_000 <http://purl.org/dc/terms/contributor> map:person_000 ;
 	rdf:type <http://rdfs.org/ns/void#Dataset> .
 
 map:s_000 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/feature/site_outside" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/feature/site_outside" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_001 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/sensor" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/sensor" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_002 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/sensor/location" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/sensor/location" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_003 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/humidity" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/humidity" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_004 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/humidity" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/humidity" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_005 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/humidity" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/humidity" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_006 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/uv" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/uv" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_007 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/uv" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/uv" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_008 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/uv" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/uv" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_009 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/pressure" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/pressure" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_010 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/pressure" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/pressure" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_011 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/pressure" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/pressure" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_012 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/wind_speed" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/wind_speed" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_013 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/wind_speed" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/wind_speed" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_014 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/wind_speed" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/wind_speed" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_015 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/wind_speed_avg" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/wind_speed_avg" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_016 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/wind_speed_avg" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/wind_speed_avg" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_017 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/wind_speed_avg" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/wind_speed_avg" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_018 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/wind_dir" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/wind_dir" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_019 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/wind_dir" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/wind_dir" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_020 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/wind_dir" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/wind_dir" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_021 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/temp" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/temp" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_022 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/temp" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/temp" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_023 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/temp" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/temp" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_024 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/sun" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/sun" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_025 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/sun" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/sun" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_026 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/sun" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/sun" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_027 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/rain" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/prop/site_outside/rain" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_028 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/rain" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/obs/rain" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
 
 map:s_029 rdf:type rr:SubjectMap ;
-	rr:constant "https://assist-iot.eu/pilot2_rdf/result/rain" .
+	rr:constant "https://assist-iot.eu/pilot2_rdf/result/rain" ;
+	rr:graphMap [ rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ] .
+
+map:map_graph_000 rml:logicalSource map:source_000 ;
+	rdf:type rr:TriplesMap ;
+	rdfs:label "feature" ;
+	rr:predicateObjectMap [
+	    rdf:type rr:PredicateObjectMap ;
+        rr:objectMap [
+            rml:reference "timestamp" ;
+            rdf:type rr:ObjectMap ;
+            rr:datatype xsd:dateTime ;
+            rr:termType rr:Literal ;
+        ] ;
+        rr:predicateMap [
+            rdf:type rr:PredicateMap ;
+	        rr:constant prov:atTime ;
+        ] ;
+	] ;
+	rr:subjectMap [
+	    rdf:type rr:SubjectMap ;
+	    rr:template "https://assist-iot.eu/pilot2_rdf/graph/ws/{identifier}/{timestamp}" ;
+	] .
 
 map:source_000 rml:iterator "$" ;
 	rml:referenceFormulation ql:JSONPath ;
 	rml:source "./temp/data.json" ;
 	rdf:type rml:LogicalSource ;
 	rdfs:label "main" .
-
