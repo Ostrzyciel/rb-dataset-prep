@@ -1,1 +1,28 @@
-{"identifier": "ibs_1", "location": {"latitude": 52.2455635, "longitude": 20.9403853}, "timestamp": "2023-01-02T18:12:51.444254", "bar_trend": 0, "barometer": 30.644, "temp_in": 69.4, "temp_out": 52.2, "hum_in": 34, "hum_out": 76, "wind_speed": 5, "wind_speed_10_min_avg": 8, "wind_direction": 295, "rain_rate": 0.0, "uv": 0, "solar_radiation": 0, "storm_rain": 0.0, "rain_day": 0.0, "rain_month": 0.0, "rain_year": 0.0, "et_day": 0.023, "et_month": 0.08, "et_year": 0.08, "version": "1.1.0"}
+{
+	"identifier": "ibs_1",
+	"location": {
+		"latitude": 52.2455635,
+		"longitude": 20.9403853
+	},
+	"timestamp": "2023-01-02T18:12:51.444254",
+	"bar_trend": 0,
+	"barometer": 30.644,
+	"temp_in": 69.4,
+	"temp_out": 52.2,
+	"hum_in": 34,
+	"hum_out": 76,
+	"wind_speed": 5,
+	"wind_speed_10_min_avg": 8,
+	"wind_direction": 295,
+	"rain_rate": 0.0,
+	"uv": 0,
+	"solar_radiation": 0,
+	"storm_rain": 0.0,
+	"rain_day": 0.0,
+	"rain_month": 0.0,
+	"rain_year": 0.0,
+	"et_day": 0.023,
+	"et_month": 0.08,
+	"et_year": 0.08,
+	"version": "1.1.0"
+}
